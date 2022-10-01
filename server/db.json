@@ -1,0 +1,12 @@
+{
+  "contacts": [
+
+  ],
+  "users": [
+    {
+      "email": "testuser@mail.com",
+      "password": "$2a$10$.IM.MJ8Y.sNu8DfSakNMEesE/e4sw2BgV2Flx0Gq17kKDQbaxquJu",
+      "id": 1
+    }
+  ]
+}

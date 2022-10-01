@@ -2,32 +2,45 @@ import React from 'react';
 
 import { FormControl, FormGroup, TextField } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
+import { Navigate } from 'react-router-dom';
 
 import classes from './Login.module.css';
 
 import { StyledButton } from 'components';
-import { PASSWORD_RULES } from 'constant';
-import { useVisibility } from 'hooks';
+import { EMAIL_RULES, PASSWORD_RULES } from 'constant';
+import { useAppDispatch, useAppSelector, useVisibility } from 'hooks';
+import { login } from 'store/thunks';
 import { FormValues, ReturnComponentType } from 'types';
+import { setValueToLocalStorage } from 'utils';
 
 export const Login = (): ReturnComponentType => {
+    const dispatch = useAppDispatch();
+
+    const isUserAuth = useAppSelector(state => state.auth.isUserAuth);
+
     const {
         control,
         handleSubmit,
         formState: { errors },
     } = useForm<FormValues>({
         defaultValues: {
-            username: '',
-            password: '',
+            email: 'testuser@mail.com',
+            password: 'testpassword',
         },
         mode: 'onChange',
     });
 
     const [visible, visibility] = useVisibility(false);
 
-    const onSubmit = async (values: FormValues): Promise<void> => {
-        console.log(values);
+    const onSubmit = async (data: FormValues): Promise<void> => {
+        const { payload } = await dispatch(login(data));
+
+        if (payload) {
+            setValueToLocalStorage(payload);
+        }
     };
+
+    if (isUserAuth) return <Navigate to={'/'} />;
 
     return (
         <div className={classes.formWrapper}>
@@ -36,19 +49,20 @@ export const Login = (): ReturnComponentType => {
                 <FormControl fullWidth>
                     <FormGroup>
                         <Controller
-                            name="username"
+                            name="email"
                             control={control}
+                            rules={EMAIL_RULES}
                             render={({ field }) => (
                                 <TextField
                                     {...field}
                                     variant="standard"
                                     label="Username"
                                     margin="normal"
-                                    color={`${errors.username ? 'error' : 'primary'}`}
+                                    color={`${errors.email ? 'error' : 'primary'}`}
                                 />
                             )}
                         />
-                        <div className={classes.error}>{errors.username?.message}</div>
+                        <div className={classes.error}>{errors.email?.message}</div>
                         <Controller
                             name="password"
                             control={control}

@@ -1,3 +1,6 @@
+import { UserType } from 'types';
+
 export type LoginResponse = {
-    Token: 'KUuF3sNOiL';
+    accessToken: string;
+    user: UserType;
 };

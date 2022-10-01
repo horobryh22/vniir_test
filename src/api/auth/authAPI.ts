@@ -1,5 +1,5 @@
+import { LoginResponse } from 'api';
 import { instance } from 'api/config';
-import { LoginResponse } from 'api/types/LoginResponse';
 import { FormValues } from 'types';
 
 export const authAPI = {
