@@ -1,0 +1,22 @@
+.wrapper {
+    padding: 40px 0;
+}
+
+.title {
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    margin: 20px 0 20px 0;
+}
+
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.section p {
+    width: 60%;
+    padding: 20px;
+}
