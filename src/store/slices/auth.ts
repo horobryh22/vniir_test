@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 
 import { login } from 'store/thunks';
 import { AuthStateType } from 'store/types';
@@ -13,6 +14,9 @@ export const authSlice = createSlice({
     reducers: {
         logout: state => {
             state.isUserAuth = false;
+        },
+        setIsUserAuth: (state, action: PayloadAction<boolean>) => {
+            state.isUserAuth = action.payload;
         },
     },
     extraReducers: builder => {
@@ -29,4 +33,4 @@ export const authSlice = createSlice({
 });
 
 export default authSlice.reducer;
-export const { logout } = authSlice.actions;
+export const { logout, setIsUserAuth } = authSlice.actions;

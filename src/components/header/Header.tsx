@@ -5,30 +5,17 @@ import { NavLink, useNavigate } from 'react-router-dom';
 
 import classes from './Header.module.css';
 
+import { LINKS } from 'constant';
+import { useAppDispatch, useAppSelector } from 'hooks';
+import { logout } from 'store/slices';
 import { ReturnComponentType } from 'types';
 
-export type Link = {
-    name: string;
-    link: string;
-};
-
-const LINKS: Link[] = [
-    {
-        name: 'Main',
-        link: '/',
-    },
-    {
-        name: 'News',
-        link: '/news',
-    },
-    {
-        name: 'Profile',
-        link: '/profile',
-    },
-];
-
 export const Header = (): ReturnComponentType => {
+    const dispatch = useAppDispatch();
+
     const navigate = useNavigate();
+
+    const isUserAuth = useAppSelector(state => state.auth.isUserAuth);
 
     const links = LINKS.map(({ link, name }, index) => {
         return (
@@ -38,8 +25,13 @@ export const Header = (): ReturnComponentType => {
         );
     });
 
-    const handleClick = (): void => {
+    const toLogin = (): void => {
         navigate('/login');
+    };
+
+    const userLogout = (): void => {
+        dispatch(logout());
+        window.localStorage.removeItem('token');
     };
 
     return (
@@ -54,8 +46,8 @@ export const Header = (): ReturnComponentType => {
                     >
                         {links}
                     </Typography>
-                    <Button color="inherit" onClick={handleClick}>
-                        Login
+                    <Button color="inherit" onClick={isUserAuth ? userLogout : toLogin}>
+                        {isUserAuth ? 'Logout' : 'Login'}
                     </Button>
                 </Toolbar>
             </AppBar>

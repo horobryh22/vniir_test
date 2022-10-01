@@ -4,4 +4,4 @@ export {
     setIsAppInitialized,
     setAppError,
 } from './app';
-export { default as authReducer, logout } from './auth';
+export { default as authReducer, logout, setIsUserAuth } from './auth';
