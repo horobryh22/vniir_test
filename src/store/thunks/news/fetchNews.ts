@@ -1,12 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 
-import { News, newsAPI } from 'api';
+import { NewsType, newsAPI } from 'api';
 import { REQUEST_STATUS } from 'enums';
 import { setAppError, setAppStatus } from 'store/slices';
 import { Nullable } from 'types';
 
-export const fetchNews = createAsyncThunk<News[], void, { rejectValue: string }>(
+export const fetchNews = createAsyncThunk<NewsType[], void, { rejectValue: string }>(
     'news/fetchNews',
     async (_, { rejectWithValue, dispatch }) => {
         try {

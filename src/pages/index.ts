@@ -1,4 +1,4 @@
 export { Login } from './login/Login';
-export { News } from './news/News';
+export { NewsList } from 'pages/news/NewsList';
 export { Main } from './main/Main';
 export { Profile } from './profile/Profile';

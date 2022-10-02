@@ -1,8 +1,8 @@
-import { News } from 'api';
+import { NewsType } from 'api';
 import { instance } from 'api/config';
 
 export const newsAPI = {
     fetchNews: () => {
-        return instance.get<News[]>('/news');
+        return instance.get<NewsType[]>('/news');
     },
 };

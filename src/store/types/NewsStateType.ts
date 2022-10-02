@@ -1,5 +1,5 @@
-import { News } from 'api';
+import { NewsType } from 'api';
 
 export type NewsStateType = {
-    news: News[];
+    news: NewsType[];
 };

@@ -3,7 +3,7 @@ import React from 'react';
 import { Container, Grid } from '@mui/material';
 import { Route, Routes } from 'react-router-dom';
 
-import { Login, Main, News, Profile } from 'pages';
+import { Login, Main, NewsList, Profile } from 'pages';
 import { ReturnComponentType } from 'types';
 
 export const RoutesApp = (): ReturnComponentType => {
@@ -13,7 +13,7 @@ export const RoutesApp = (): ReturnComponentType => {
                 <Routes>
                     <Route path="/" element={<Main />} />
                     <Route path="/login" element={<Login />} />
-                    <Route path="/news" element={<News />} />
+                    <Route path="/news" element={<NewsList />} />
                     <Route path="/profile" element={<Profile />} />
                 </Routes>
             </Grid>
