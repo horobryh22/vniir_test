@@ -5,3 +5,4 @@ export {
     setAppError,
 } from './app';
 export { default as authReducer, logout, setIsUserAuth } from './auth';
+export { default as newsReducer } from './news';
