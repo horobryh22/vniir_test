@@ -8,6 +8,14 @@
     cursor: pointer;
 }
 
+.authUser {
+    margin-right: 50px;
+    width: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .link {
     text-decoration: none;
     color: white;
@@ -17,6 +25,6 @@
 }
 
 .link:hover {
-    color: yellow;
+    color: rgb(245, 210, 235);
     border-bottom: 1px solid white;
 }

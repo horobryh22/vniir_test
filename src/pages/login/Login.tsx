@@ -40,7 +40,7 @@ export const Login = (): ReturnComponentType => {
         }
     };
 
-    if (isUserAuth) return <Navigate to={'/'} />;
+    if (isUserAuth) return <Navigate to={'/profile'} />;
 
     return (
         <div className={classes.formWrapper}>

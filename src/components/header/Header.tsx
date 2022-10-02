@@ -5,6 +5,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 
 import classes from './Header.module.css';
 
+import { UserAvatar } from 'components/userAvatar/UserAvatar';
 import { LINKS } from 'constant';
 import { useAppDispatch, useAppSelector } from 'hooks';
 import { logout } from 'store/slices';
@@ -46,6 +47,12 @@ export const Header = (): ReturnComponentType => {
                     >
                         {links}
                     </Typography>
+                    {isUserAuth && (
+                        <div className={classes.authUser}>
+                            <UserAvatar width={40} height={40} />
+                            <span>Username</span>
+                        </div>
+                    )}
                     <Button color="inherit" onClick={isUserAuth ? userLogout : toLogin}>
                         {isUserAuth ? 'Logout' : 'Login'}
                     </Button>
