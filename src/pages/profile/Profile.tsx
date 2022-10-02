@@ -8,13 +8,14 @@ import camera from 'assets/img/camera.svg';
 import logoutImage from 'assets/img/logout.svg';
 import { EditableSpan, InputTypeFile, UserAvatar } from 'components';
 import { useAppDispatch, useAppSelector } from 'hooks';
+import { selectIsUserAuth } from 'store/selectors';
 import { logout } from 'store/slices';
 import { ReturnComponentType } from 'types';
 
 export const Profile = (): ReturnComponentType => {
     const dispatch = useAppDispatch();
 
-    const isUserAuth = useAppSelector(state => state.auth.isUserAuth);
+    const isUserAuth = useAppSelector(selectIsUserAuth);
 
     const userLogout = (): void => {
         dispatch(logout());

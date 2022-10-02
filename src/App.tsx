@@ -6,14 +6,15 @@ import { Backdrop, CircularProgress } from '@mui/material';
 import { ErrorSnackbar, Header, RoutesApp } from 'components';
 import { REQUEST_STATUS } from 'enums';
 import { useAppDispatch, useAppSelector } from 'hooks';
+import { selectIsInitialized, selectStatus } from 'store/selectors';
 import { setIsAppInitialized, setIsUserAuth } from 'store/slices';
 import { ReturnComponentType } from 'types';
 
 const App = (): ReturnComponentType => {
     const dispatch = useAppDispatch();
 
-    const status = useAppSelector(state => state.app.status);
-    const isAppInitialized = useAppSelector(state => state.app.isInitialized);
+    const status = useAppSelector(selectStatus);
+    const isAppInitialized = useAppSelector(selectIsInitialized);
 
     useEffect(() => {
         const token = window.localStorage.getItem('token');

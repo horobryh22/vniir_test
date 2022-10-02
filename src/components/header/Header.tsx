@@ -5,9 +5,10 @@ import { NavLink, useNavigate } from 'react-router-dom';
 
 import classes from './Header.module.css';
 
-import { UserAvatar } from 'components/userAvatar/UserAvatar';
+import { UserAvatar } from 'components';
 import { LINKS } from 'constant';
 import { useAppDispatch, useAppSelector } from 'hooks';
+import { selectIsUserAuth } from 'store/selectors';
 import { logout } from 'store/slices';
 import { ReturnComponentType } from 'types';
 
@@ -16,7 +17,7 @@ export const Header = (): ReturnComponentType => {
 
     const navigate = useNavigate();
 
-    const isUserAuth = useAppSelector(state => state.auth.isUserAuth);
+    const isUserAuth = useAppSelector(selectIsUserAuth);
 
     const links = LINKS.map(({ link, name }, index) => {
         return (

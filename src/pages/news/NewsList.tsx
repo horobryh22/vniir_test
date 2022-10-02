@@ -4,13 +4,14 @@ import classes from './News.module.css';
 
 import { News } from 'components';
 import { useAppDispatch, useAppSelector } from 'hooks';
+import { selectNews } from 'store/selectors';
 import { fetchNews } from 'store/thunks';
 import { ReturnComponentType } from 'types';
 
 export const NewsList = (): ReturnComponentType => {
     const dispatch = useAppDispatch();
 
-    const news = useAppSelector(state => state.news.news);
+    const news = useAppSelector(selectNews);
 
     useEffect(() => {
         dispatch(fetchNews());

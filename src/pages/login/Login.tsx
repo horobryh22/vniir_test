@@ -9,6 +9,7 @@ import classes from './Login.module.css';
 import { StyledButton } from 'components';
 import { EMAIL_RULES, PASSWORD_RULES } from 'constant';
 import { useAppDispatch, useAppSelector, useVisibility } from 'hooks';
+import { selectIsUserAuth } from 'store/selectors';
 import { login } from 'store/thunks';
 import { FormValues, ReturnComponentType } from 'types';
 import { setValueToLocalStorage } from 'utils';
@@ -16,7 +17,7 @@ import { setValueToLocalStorage } from 'utils';
 export const Login = (): ReturnComponentType => {
     const dispatch = useAppDispatch();
 
-    const isUserAuth = useAppSelector(state => state.auth.isUserAuth);
+    const isUserAuth = useAppSelector(selectIsUserAuth);
 
     const {
         control,
